@@ -1,0 +1,13 @@
+.topbar-bg {
+  background: url("~@/assets/frame/topbar.png") no-repeat;
+}
+
+.lng-bg{
+    background: url('~@/assets/layer/layer.png') no-repeat;
+}
+
+input {
+  &::placeholder {
+    color: #9b9b9b;
+  }
+}
