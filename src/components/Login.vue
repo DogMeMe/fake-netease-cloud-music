@@ -2,7 +2,7 @@
   <div class="lng">
     <div class="head lng-bg">
       <span class="head-tit">登录</span>
-      <span class="close lng-bg" title="关闭窗体"></span>
+      <span class="close lng-bg m-hand" title="关闭窗体"></span>
     </div>
     <div class="lng-cnt">
       <div class="qrcd-cnt">
@@ -44,9 +44,10 @@ export default defineComponent({
   },
   setup() {
     const lngType = ref(0);
-    const qrurl: Ref<string> = ref("");
+    const qrurl: Ref<string> = ref("333");
     const showLogin = async () => {
-      qrurl.value = (await QrLng.geneQr()).qrurl;
+      // qrurl.value = (await QrLng.geneQr()).qrurl;
+      await QrLng.geneQr()
     };
     showLogin();
     return {
@@ -91,7 +92,6 @@ export default defineComponent({
       height: 10px;
       overflow: hidden;
       text-indent: -9999px;
-      cursor: pointer;
       background-position: 0 -95px;
     }
   }

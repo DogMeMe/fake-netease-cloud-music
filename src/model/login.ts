@@ -1,9 +1,15 @@
-export interface IQrKey {
-  code: number;
-  unikey: string;
+import { IResponse } from "@/utils/http/type";
+
+export interface IQrKey extends IResponse {
+  data: {
+    code: number;
+    unikey: string;
+  };
 }
 
-export interface IQrBase {
-  qrimg: string;
-  qrurl: string;
+export interface IQrBase extends IResponse {
+  data: {
+    qrimg: string;
+    qrurl: string;
+  };
 }

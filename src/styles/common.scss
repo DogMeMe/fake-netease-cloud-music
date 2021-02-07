@@ -6,8 +6,38 @@
     background: url('~@/assets/layer/layer.png') no-repeat;
 }
 
+.ban-bg{
+  background: url('~@/assets/discover/banner.png') no-repeat;
+}
+
+.foot-bg{
+  background: url('~@/assets/foot/foot_enter.png') no-repeat; 
+  background-size: 110px 552px;
+}
+
+.foot-tbg{
+  background: url('~@/assets/foot/foot_enter_tt.png') no-repeat; 
+  background-size: 180px 139px;
+}
+
+.sprite-bg{
+  background: url('~@/assets/layer/sprite.png') no-repeat; 
+}
+
 input {
   &::placeholder {
     color: #9b9b9b;
   }
+}
+
+.wrap {
+  width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.m-hand{
+  cursor: pointer;
 }

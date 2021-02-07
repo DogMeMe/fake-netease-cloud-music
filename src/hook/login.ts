@@ -3,13 +3,13 @@ import { IQrBase } from "@/model/login";
 
 export class QrLng {
   static async geneQr() {
-    let qrurl = ''
+    let qrurl = "";
     const res = await getQrKey();
-    if (res) {
-      qrurl = ((await getQrBase(res.unikey)) as IQrBase).qrurl;
+    if (res?.data) {
+      qrurl = ((await getQrBase(res.data.unikey)) as IQrBase).data.qrurl;
     }
     return {
-        qrurl
-    }
+      qrurl,
+    };
   }
 }
