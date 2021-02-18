@@ -71,7 +71,18 @@
         </div>
       </div>
     </div>
-    <div class="g-sdl"></div>
+    <div class="g-sdl">
+      <div class="user-profile r-bg">
+        <p class="note s-fc3">
+          登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机
+        </p>
+        <a class="btn r-bg">用户登录</a>
+      </div>
+      <div class="singer">
+
+      </div>
+      <div class="dj"></div>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -81,6 +92,7 @@ import {
   useToplist,
   useNewAlbum,
   useRecPlaylist,
+  useSinger,
 } from "@/hook/discover";
 import RTitle from "@/components/RTitle.vue";
 import Playlist from "@/components/Playlist.vue";
@@ -96,6 +108,8 @@ export default defineComponent({
     const { recPlaylist } = useRecPlaylist();
     const { newAlbum } = useNewAlbum();
     const { toplist } = useToplist();
+    // const { singer } = useSinger();
+    useSinger();
     return {
       banner,
       total,
@@ -107,6 +121,7 @@ export default defineComponent({
       recPlaylist,
       newAlbum,
       toplist,
+      // singer
     };
   },
 });
@@ -209,7 +224,6 @@ export default defineComponent({
     padding: 20px 20px 40px;
     box-sizing: border-box;
     float: left;
-    margin-right: 250px;
     width: calc(100% - 250px);
     .m-rcmd {
       margin-bottom: 35px;
@@ -256,6 +270,31 @@ export default defineComponent({
   .g-sdl {
     float: right;
     width: 250px;
+    .user-profile {
+      height: 126px;
+      background-position: 0 0;
+      .note {
+        width: 205px;
+        margin: 0 auto;
+        padding: 16px 0;
+        line-height: 22px;
+      }
+      .btn {
+        display: block;
+        width: 100px;
+        height: 31px;
+        line-height: 31px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 1px 0 #8a060b;
+        margin: 0 auto;
+        background-position: 0 -195px;
+        &:hover {
+          text-decoration: none;
+          background-position: -110px -195px;
+        }
+      }
+    }
   }
 }
 </style>

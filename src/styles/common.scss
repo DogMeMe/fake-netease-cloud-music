@@ -36,6 +36,10 @@
   background: url("~@/assets/discover/coverall.png") no-repeat;
 }
 
+.icon-bg{
+  background: url('~@/assets/frame/icon.png') no-repeat;
+}
+
 input {
   &::placeholder {
     color: #9b9b9b;

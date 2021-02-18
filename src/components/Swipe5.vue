@@ -26,13 +26,13 @@
 <script lang="ts">
 import MAlbum from "@/components/MAlbum.vue";
 import { IAlbum } from "@/model/discover";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, PropType } from "vue";
 export default defineComponent({
   components: { MAlbum },
   name: "Swipe5",
   props: {
     list: {
-      type: Array,
+      type: Array as PropType<Array<IAlbum>>,
       required: true,
     },
   },

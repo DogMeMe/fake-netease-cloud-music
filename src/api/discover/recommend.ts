@@ -1,26 +1,38 @@
-import { IBannerData, ICatHotData, INewAlbumData, IRecPlaylistData, IToplistData, ITopPlayData } from "@/model/discover"
-import { reqGet } from "@/utils/http"
+import {
+  IBannerData,
+  ICatHotData,
+  INewAlbumData,
+  IRecPlaylistData,
+//   ISingerData,
+  IToplistData,
+  ITopPlayData,
+} from "@/model/discover";
+import { reqGet } from "@/utils/http";
 
 export const getBanner = async () => {
-    return await reqGet<IBannerData>('/banner')
-}
+  return await reqGet<IBannerData>("/banner");
+};
 
 export const getCatHot = async () => {
-    return reqGet<ICatHotData>('/playlist/hot')
-}
+  return reqGet<ICatHotData>("/playlist/hot");
+};
 
 export const getRecPlaylist = async () => {
-    return reqGet<IRecPlaylistData>('/personalized')
-}
+  return reqGet<IRecPlaylistData>("/personalized");
+};
 
 export const getNewAlbum = async () => {
-    return reqGet<INewAlbumData>('/top/album')
-}
+  return reqGet<INewAlbumData>("/top/album");
+};
 
 export const getToplist = async () => {
-    return reqGet<IToplistData>('/toplist')
-}
+  return reqGet<IToplistData>("/toplist");
+};
 
-export const getPlaylist =  async (id: number) => {
-    return reqGet<ITopPlayData>(`/playlist/detail?&id=${id}`)
-}
+export const getPlaylist = async (id: number) => {
+  return reqGet<ITopPlayData>(`/playlist/detail?&id=${id}`);
+};
+
+// export const getSinger = async () => {
+//   return reqGet<ISingerData>("/artist/list");
+// };

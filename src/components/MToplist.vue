@@ -14,12 +14,22 @@
     </div>
     <ol class="top-list">
       <li v-for="({ id, name }, index) in list" :key="id">
-        <span class="order" :class="index < 3 ? 'no-top' : ''">{{
-          index + 1
-        }}</span>
-        <router-link to="/song" class="name" :title="name">{{ name }}</router-link>
+        <span class="order" :class="index < 3 ? 'no-top' : ''">
+          {{ index + 1 }}
+        </span>
+        <router-link to="/song" class="name" :title="name">
+          {{ name }}
+        </router-link>
+        <div class="oper">
+          <a class="oper-play r-bg" title="播放" />
+          <a class="oper-add icon-bg" title="添加到播放列表" />
+          <a class="oper-collect r-bg" title="收藏" />
+        </div>
       </li>
     </ol>
+    <div class="more">
+      <router-link to="/discover/toplist">查看全部></router-link>
+    </div>
   </div>
 </template>
 
@@ -108,7 +118,40 @@ export default {
           color: #c10d0c;
         }
       }
+      &:hover {
+        .oper {
+          display: block;
+        }
+      }
+      .oper {
+        display: none;
+        float: right;
+        width: 82px;
+        margin-top: 7px;
+        a {
+          display: inline-block;
+          width: 17px;
+          height: 17px;
+          margin-right: 10px;
+          &.oper-play {
+            background-position: -267px -268px;
+          }
+          &.oper-add {
+            background-position: 0 -700px;
+            margin: 2px 6px 0 0;
+          }
+          &.oper-collect {
+            background-position: -297px -268px;
+          }
+        }
+      }
     }
+  }
+  .more {
+    height: 32px;
+    margin-right: 32px;
+    text-align: right;
+    line-height: 32px;
   }
 }
 </style>

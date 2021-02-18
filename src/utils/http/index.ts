@@ -21,7 +21,7 @@ export const reqPost = <T extends IResponse>(
   url: string,
   data: object
 ): Promise<T | undefined> => {
-  return mAxios.post(url).then((response: AxiosResponse<T>): T | undefined => {
+  return mAxios.post(url, data).then((response: AxiosResponse<T>): T | undefined => {
     if (response.data.code === 200) {
       return response.data;
     }

@@ -35,32 +35,32 @@ export interface IRecPlaylist {
 }
 
 export interface IRecPlaylistData extends IResponse {
-  result: Array<IRecPlaylist>
+  result: Array<IRecPlaylist>;
 }
 
 export interface Artist {
   id: number;
   followed: boolean;
   name: string;
-  topicPerson: number
+  topicPerson: number;
 }
 
 export interface IAlbum {
   name: string;
-  artists: Array<Artist>,
+  artists: Array<Artist>;
   picUrl: string;
-  id: number
+  id: number;
 }
 
 export interface INewAlbumData extends IResponse {
-  monthData: Array<IAlbum>
+  monthData: Array<IAlbum>;
 }
 
-type ToplistType = 'S' | 'O' | 'N'
+type ToplistType = "S" | "O" | "N";
 
 export interface ITopSong {
   id: number;
-  name: string
+  name: string;
 }
 
 export interface IToplist {
@@ -68,11 +68,11 @@ export interface IToplist {
   name: string;
   ToplistType: ToplistType;
   coverImgUrl: string;
-  tracks: Array<ITopSong>
+  tracks: Array<ITopSong>;
 }
 
 export interface IToplistData extends IResponse {
-  list: Array<IToplist>
+  list: Array<IToplist>;
 }
 
 export interface ITopPlayData extends IResponse {
@@ -80,6 +80,15 @@ export interface ITopPlayData extends IResponse {
     id: number;
     name: string;
     ToplistType: ToplistType;
-    tracks: Array<ITopSong>
-  }
+    tracks: Array<ITopSong>;
+  };
 }
+// export interface ISinger {
+//   id: number;
+//   name: string;
+//   picUrl: string;
+// }
+
+// export interface ISingerData extends IResponse {
+//   artists: Array<ISinger>;
+// }

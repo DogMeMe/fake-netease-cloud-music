@@ -4,12 +4,12 @@
       <img :src="pic" />
     </router-link>
     <p class="a-row name">
-      <router-link to="/album">
+      <router-link to="/album" :title="name">
         {{ name }}
       </router-link>
     </p>
     <p class="a-row artists">
-      <router-link to="/artist">
+      <router-link to="/artist" :title="artiststr">
         {{ artiststr }}
       </router-link>
     </p>
