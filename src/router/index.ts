@@ -5,6 +5,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Discover",
+    redirect: '/discover',
     component: () =>
       import(/* webpackChunkName: "discover" */ "@/views/discover/Index.vue"),
     children: [

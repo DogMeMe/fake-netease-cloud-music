@@ -2,8 +2,8 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { IResponse } from "@/utils/http/type";
 
 const axiosInstance = axios.create({
-  baseURL: 'http://192.168.2.194:3000/',
-  timeout: 10000,
+  baseURL: 'http://localhost:3000/',
+  timeout: 50000,
 });
 
 axiosInstance.interceptors.request.use(

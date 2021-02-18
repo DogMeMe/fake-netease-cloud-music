@@ -15,7 +15,6 @@
           <span class="sep">网易公司版权所有©1997-2021</span>
           <span>杭州乐读科技有限公司运营：</span>
           <a
-            class="m-hand"
             href="https://p1.music.126.net/Mos9LTpl6kYt6YTutA6gjg==/109951164248627501.png"
             target="_blank"
           >
@@ -25,11 +24,11 @@
         <p>
           <span class="sep">违法和不良信息举报电话：0571-89853516</span>
           <span> 举报邮箱：</span>
-          <a href="mailto:ncm5990@163.com" class="m-hand">ncm5990@163.com</a>
+          <a href="mailto:ncm5990@163.com">ncm5990@163.com</a>
         </p>
         <p>
           <a
-            class="m-hand sep"
+            class="sep"
             href="https://beian.miit.gov.cn/#/Integrated/index"
             target="_blank"
           >
@@ -37,7 +36,6 @@
           </a>
           <img src="~@/assets/foot/police.png" width="14" height="14" />
           <a
-            class="m-hand"
             href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002564"
             target="_blank"
           >
@@ -157,11 +155,6 @@ export default defineComponent({
         }
         .sep {
           margin-right: 14px;
-        }
-        .m-hand {
-          &:hover {
-            text-decoration: underline;
-          }
         }
       }
     }

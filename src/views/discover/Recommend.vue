@@ -8,11 +8,11 @@
         <img :src="`${banner.imageUrl}?imageView&quality=89`" />
         <div class="ban-indi">
           <a
-            :class="{active: index === i - 1}"
+            :class="{ active: index === i - 1 }"
             v-for="i in total"
             :key="i"
             @click="getIndexBan(i - 1)"
-            class="m-hand ban-dot ban-bg"
+            class="ban-dot ban-bg"
           ></a>
         </div>
       </div>
@@ -22,17 +22,80 @@
         <div class="down-sha down-sha-l ban-bg"></div>
         <div class="down-sha down-sha-r ban-bg"></div>
       </div>
-      <a class="ban-pre ban-swh ban-bg m-hand" @click="preBan"></a>
-      <a class="ban-next ban-swh ban-bg m-hand" @click="nextBan"></a>
+      <a class="ban-pre ban-swh ban-bg" @click="preBan"></a>
+      <a class="ban-next ban-swh ban-bg" @click="nextBan"></a>
     </div>
+  </div>
+  <div class="g-mn">
+    <div class="g-wrap">
+      <div class="m-rcmd">
+        <r-title title="热门推荐">
+          <div class="g-tab" v-if="catHots.length">
+            <template v-for="(cat, index) in catHots">
+              <router-link
+                :to="`/discover/playlist?cat=${cat.name}`"
+                :key="cat.id"
+                v-if="index < 5"
+              >
+                {{ cat.name }}
+              </router-link>
+            </template>
+          </div>
+        </r-title>
+        <ul class="g-playlist">
+          <playlist
+            v-for="{ id, name, picUrl, playCount } in recPlaylist"
+            :key="id"
+            :width="140"
+            :name="name"
+            :pic="picUrl"
+            :count="playCount"
+          />
+        </ul>
+      </div>
+      <div class="m-new">
+        <r-title title="新碟上架" />
+        <swipe-5 class="new-album" :list="newAlbum" />
+      </div>
+      <div class="m-list">
+        <r-title title="榜单" />
+        <div class="list-wrap">
+          <m-toplist
+            v-for="{ id, name, ToplistType, coverImgUrl, tracks } in toplist"
+            :key="id"
+            :name="name"
+            :type="ToplistType"
+            :cover="coverImgUrl"
+            :list="tracks"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="g-sdl"></div>
   </div>
 </template>
 <script lang="ts">
-import { useBanner } from "@/hook/discover";
-export default {
+import {
+  useBanner,
+  useCatHotlist,
+  useToplist,
+  useNewAlbum,
+  useRecPlaylist,
+} from "@/hook/discover";
+import RTitle from "@/components/RTitle.vue";
+import Playlist from "@/components/Playlist.vue";
+import { defineComponent } from "vue";
+import Swipe5 from "@/components/Swipe5.vue";
+import MToplist from "@/components/MToplist.vue";
+export default defineComponent({
+  components: { RTitle, Playlist, Swipe5, MToplist },
   name: "DiscoverRecommend",
   setup() {
     const { banner, index, total, preBan, nextBan, getIndexBan } = useBanner();
+    const { catHots } = useCatHotlist();
+    const { recPlaylist } = useRecPlaylist();
+    const { newAlbum } = useNewAlbum();
+    const { toplist } = useToplist();
     return {
       banner,
       total,
@@ -40,9 +103,13 @@ export default {
       preBan,
       nextBan,
       getIndexBan,
+      catHots,
+      recPlaylist,
+      newAlbum,
+      toplist,
     };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .m-ban {
@@ -116,7 +183,6 @@ export default {
       width: 37px;
       height: 63px;
       text-indent: -9999px;
-
       &.ban-pre {
         background-position: 0 -360px;
         left: -10px;
@@ -132,6 +198,64 @@ export default {
         }
       }
     }
+  }
+}
+.g-mn {
+  width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: url("~@/assets/frame/wrap1.png") repeat-y 100% 100%;
+  .g-wrap {
+    padding: 20px 20px 40px;
+    box-sizing: border-box;
+    float: left;
+    margin-right: 250px;
+    width: calc(100% - 250px);
+    .m-rcmd {
+      margin-bottom: 35px;
+      .g-tab {
+        float: left;
+        margin: 7px 0 0 10px;
+        a {
+          padding: 0 13px;
+          &:not(:last-child) {
+            border-right: 1px solid #ccc;
+          }
+        }
+      }
+      .g-playlist {
+        margin: 20px 0 0 -42px;
+        overflow: hidden;
+        .playlist {
+          padding-left: 42px;
+          padding-bottom: 30px;
+        }
+      }
+    }
+    .m-new {
+      .new-album {
+        margin: 20px 0 37px;
+        border: 1px solid #d3d3d3;
+        background: #f5f5f5;
+        height: 186px;
+      }
+    }
+    .m-list {
+      .list-wrap {
+        height: 472px;
+        margin-top: 20px;
+        padding-left: 1px;
+        background: url("~@/assets/discover/bill.png");
+        display: flex;
+        .m-list {
+          flex: 1;
+        }
+      }
+    }
+  }
+  .g-sdl {
+    float: right;
+    width: 250px;
   }
 }
 </style>

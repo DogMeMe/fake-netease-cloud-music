@@ -1,4 +1,5 @@
-import { getBanner } from "@/api/discover/recommend";
+import { ICatHot, IRecPlaylist, IAlbum, IToplist } from './../model/discover';
+import { getBanner, getCatHot, getRecPlaylist, getNewAlbum, getToplist, getPlaylist } from "@/api/discover/recommend";
 import { IBanner } from "@/model/discover";
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import Personal from "@/config/personal";
@@ -28,7 +29,7 @@ export const useBanner = () => {
   };
 
   watch(index, () => {
-      getIndexBan(index.value)
+    getIndexBan(index.value)
   });
 
   onMounted(async () => {
@@ -54,3 +55,62 @@ export const useBanner = () => {
     getIndexBan,
   };
 };
+
+export const useCatHotlist = () => {
+  const catHots = ref([] as Array<ICatHot>)
+  onMounted(async () => {
+    const res = await getCatHot()
+    if (res?.tags) {
+      catHots.value = res.tags
+    }
+  })
+  return {
+    catHots
+  }
+}
+
+export const useRecPlaylist = () => {
+  const recPlaylist = ref([] as Array<IRecPlaylist>)
+  onMounted(async () => {
+    const res = await getRecPlaylist()
+    if (res?.result) {
+      recPlaylist.value = res.result.splice(0, 8)
+    }
+  })
+  return {
+    recPlaylist
+  }
+}
+
+export const useNewAlbum = () => {
+  const newAlbum = ref([] as Array<IAlbum>)
+  onMounted(async () => {
+    const res = await getNewAlbum()
+    if (res?.monthData) {
+      newAlbum.value = res.monthData.splice(0, 10)
+    }
+  })
+  return {
+    newAlbum
+  }
+}
+
+export const useToplist = () => {
+  const toplist = ref([] as Array<IToplist>)
+  onMounted(async () => {
+    const res = await getToplist()
+    if (res?.list) {
+      toplist.value = res.list.splice(0, 3)
+      toplist.value.forEach(async ({ id }, index) => {
+        const songRes = await getPlaylist(id)
+        if(songRes?.playlist){
+          toplist.value[index].tracks = songRes.playlist.tracks.splice(0, 10)
+        }
+      })
+    }
+  })
+  return {
+    toplist
+  }
+}
+

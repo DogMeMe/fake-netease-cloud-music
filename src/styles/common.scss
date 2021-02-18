@@ -24,6 +24,18 @@
   background: url('~@/assets/layer/sprite.png') no-repeat; 
 }
 
+.r-bg{
+  background: url('~@/assets/discover/index.png') no-repeat;
+}
+
+.icon-bg{
+  background: url('~@/assets/frame/iconall.png') no-repeat;
+}
+
+.cover-bg{
+  background: url("~@/assets/discover/coverall.png") no-repeat;
+}
+
 input {
   &::placeholder {
     color: #9b9b9b;
@@ -38,6 +50,3 @@ input {
   margin: 0 auto;
 }
 
-.m-hand{
-  cursor: pointer;
-}

@@ -2,7 +2,7 @@
   <div class="lng">
     <div class="head lng-bg">
       <span class="head-tit">登录</span>
-      <span class="close lng-bg m-hand" title="关闭窗体"></span>
+      <span class="close lng-bg" title="关闭窗体"></span>
     </div>
     <div class="lng-cnt">
       <div class="qrcd-cnt">
