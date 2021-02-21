@@ -34,13 +34,26 @@ export interface IRecPlaylist {
   playCount: number;
 }
 
+export interface IRecDJlist {
+  id: number;
+  name: string;
+  picUrl: string;
+  program: {
+    adjustedPlayCount: number
+  }
+}
+
 export interface IRecPlaylistData extends IResponse {
   result: Array<IRecPlaylist>;
 }
 
+export interface IRecDJlistData extends IResponse {
+  result: Array<IRecDJlist>;
+}
+
 export interface Artist {
   id: number;
-  followed: boolean;
+  followed?: boolean;
   name: string;
   topicPerson: number;
 }
@@ -53,7 +66,7 @@ export interface IAlbum {
 }
 
 export interface INewAlbumData extends IResponse {
-  monthData: Array<IAlbum>;
+  albums: Array<IAlbum>;
 }
 
 type ToplistType = "S" | "O" | "N";
@@ -83,12 +96,38 @@ export interface ITopPlayData extends IResponse {
     tracks: Array<ITopSong>;
   };
 }
-// export interface ISinger {
-//   id: number;
-//   name: string;
-//   picUrl: string;
-// }
 
-// export interface ISingerData extends IResponse {
-//   artists: Array<ISinger>;
-// }
+export interface IPlaylist {
+  id: number;
+  name: string;
+  playCount: number;
+  creator: {
+    id: number;
+    nickname: string;
+    avatarDetail?: {
+      identityIconUrl: string
+    }
+  },
+  coverImgUrl: string
+}
+
+export interface IPlaylistData extends IResponse {
+  cat: string;
+  playlists: Array<IPlaylist>;
+  more: boolean,
+  total: number
+}
+
+export interface ICategory {
+  category: number;
+  name: string
+}
+
+export interface ICategorys{
+  [prop: string]: Array<ICategory>
+}
+
+export interface ICategoryData extends IResponse {
+  sub: Array<ICategory>;
+  categories: Array<string>;
+}

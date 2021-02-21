@@ -3,8 +3,8 @@ import {
   IRecPlaylist,
   IAlbum,
   IToplist,
-  // ISinger,
-} from "./../model/discover";
+  IRecDJlist,
+} from "@/model/discover";
 import {
   getBanner,
   getCatHot,
@@ -12,7 +12,7 @@ import {
   getNewAlbum,
   getToplist,
   getPlaylist,
-  // getSinger,
+  getRecDJlist
 } from "@/api/discover/recommend";
 import { IBanner } from "@/model/discover";
 import { onMounted, onUnmounted, ref, watch } from "vue";
@@ -83,16 +83,22 @@ export const useCatHotlist = () => {
   };
 };
 
-export const useRecPlaylist = () => {
-  const recPlaylist = ref([] as Array<IRecPlaylist>);
+export const useRecList = () => {
+  const recList = ref([] as Array<IRecPlaylist | IRecDJlist>);
   onMounted(async () => {
-    const res = await getRecPlaylist();
-    if (res?.result) {
-      recPlaylist.value = res.result.splice(0, 8);
-    }
+    Promise.all([getRecPlaylist(), getRecDJlist()]).then(([res, res2]) => {
+      if (res?.result) {
+        recList.value = res.result.splice(0, 5);
+      }
+      if (res2?.result) {
+        recList.value.splice(3, 0, res2.result[0])
+        recList.value.splice(5, 0, res2.result[1])
+        recList.value.splice(7, 0, res2.result[2])
+      }
+    })
   });
   return {
-    recPlaylist,
+    recList,
   };
 };
 
@@ -100,8 +106,8 @@ export const useNewAlbum = () => {
   const newAlbum = ref([] as Array<IAlbum>);
   onMounted(async () => {
     const res = await getNewAlbum();
-    if (res?.monthData) {
-      newAlbum.value = res.monthData.splice(0, 10);
+    if (res?.albums) {
+      newAlbum.value = res.albums.splice(0, 10);
     }
   });
   return {
@@ -128,15 +134,3 @@ export const useToplist = () => {
   };
 };
 
-// export const useSinger = () => {
-//   const singer = ref([] as Array<ISinger>)
-//   onMounted(async () => {
-//     const res = await getSinger()
-//     if (res?.artists) {
-//       singer.value = res.artists.splice(0, 5)
-//     }
-//   })
-//   return {
-//     singer
-//   }
-// }

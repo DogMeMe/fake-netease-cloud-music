@@ -1,5 +1,5 @@
 <template>
-  <li class="playlist" :style="{ width: `${width}px` }">
+  <li class="playlist">
     <router-link
       class="img"
       to="/playlist"
@@ -10,16 +10,23 @@
       }"
     >
       <div class="bottom cover-bg">
-        <span class="icon-bg icon-headset"></span>
-        <a class="icon-bg icon-play"></a>
-        <span>{{count}}</span>
+        <span class="iconall-bg icon-headset"></span>
+        <a class="iconall-bg icon-play"></a>
+        <span>{{ count }}</span>
       </div>
     </router-link>
-    <p class="desc">
-      <router-link to="/playlist">
-        {{ name }}
-      </router-link>
-    </p>
+    <div class="desc">
+      <p class="name">
+        <router-link to="/playlist">
+          {{ name }}
+        </router-link>
+      </p>
+      <p class="singer">
+        <span>by</span>
+        <router-link to="/singer">{{ creatorName }}</router-link>
+        <img class="icon" :src="icon" />
+      </p>
+    </div>
   </li>
 </template>
 
@@ -39,13 +46,14 @@ export default {
       type: Number,
       required: true,
     },
-    width: {
-      type: Number,
+    creatorName: {
+      type: String,
       required: true,
     },
-  },
-  setup() {
-    return {};
+    icon: {
+      type: String,
+      require: false,
+    },
   },
 };
 </script>
@@ -53,19 +61,20 @@ export default {
 <style scoped lang="scss">
 .playlist {
   float: left;
+  height: 188px;
+  width: 140px;
   .img {
     background-size: contain;
     display: block;
     position: relative;
+    height: 140px;
     .bottom {
-      
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
       height: 27px;
       background-position: 0 -537px;
-      
       .icon-headset {
         float: left;
         width: 14px;
@@ -80,10 +89,10 @@ export default {
         width: 16px;
         height: 17px;
         background-position: 0 0;
-        & ~ span{
-            color: #ccc;
-            margin-top: 7px;
-            display: inline-block;
+        & ~ span {
+          color: #ccc;
+          margin-top: 7px;
+          display: inline-block;
         }
       }
     }
@@ -93,10 +102,35 @@ export default {
     &:hover {
       text-decoration: underline;
     }
-    a {
+    .name {
       font-size: 14px;
       color: #000;
       line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      a {
+        font-size: 14px;
+        color: #000;
+      }
+    }
+    .singer {
+      display: flex;
+      align-items: center;
+      *{
+        color: #666;
+      }
+      a {
+        max-width: 76%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0 3px;
+      }
+      .icon {
+        width: 13px;
+        height: 13px;
+      }
     }
   }
 }

@@ -43,13 +43,14 @@
           </div>
         </r-title>
         <ul class="g-playlist">
-          <playlist
-            v-for="{ id, name, picUrl, playCount } in recPlaylist"
+          <m-recList
+            v-for="{ id, name, picUrl, playCount, program } in recList"
             :key="id"
             :width="140"
             :name="name"
             :pic="picUrl"
-            :count="playCount"
+            :count="playCount || program.adjustedPlayCount"
+            :program="program"
           />
         </ul>
       </div>
@@ -91,25 +92,23 @@ import {
   useCatHotlist,
   useToplist,
   useNewAlbum,
-  useRecPlaylist,
-  useSinger,
-} from "@/hook/discover";
+  useRecList
+} from "@/hook/discover/recommend";
 import RTitle from "@/components/RTitle.vue";
-import Playlist from "@/components/Playlist.vue";
+import MRecList from "@/components/MRecList.vue";
 import { defineComponent } from "vue";
 import Swipe5 from "@/components/Swipe5.vue";
 import MToplist from "@/components/MToplist.vue";
 export default defineComponent({
-  components: { RTitle, Playlist, Swipe5, MToplist },
+  components: { RTitle, MRecList, Swipe5, MToplist },
   name: "DiscoverRecommend",
   setup() {
     const { banner, index, total, preBan, nextBan, getIndexBan } = useBanner();
     const { catHots } = useCatHotlist();
-    const { recPlaylist } = useRecPlaylist();
+    const { recList } = useRecList();
     const { newAlbum } = useNewAlbum();
     const { toplist } = useToplist();
     // const { singer } = useSinger();
-    useSinger();
     return {
       banner,
       total,
@@ -118,7 +117,7 @@ export default defineComponent({
       nextBan,
       getIndexBan,
       catHots,
-      recPlaylist,
+      recList,
       newAlbum,
       toplist,
       // singer

@@ -2,8 +2,8 @@ import {
   IBannerData,
   ICatHotData,
   INewAlbumData,
+  IRecDJlistData,
   IRecPlaylistData,
-//   ISingerData,
   IToplistData,
   ITopPlayData,
 } from "@/model/discover";
@@ -17,12 +17,16 @@ export const getCatHot = async () => {
   return reqGet<ICatHotData>("/playlist/hot");
 };
 
+export const getRecDJlist = async () => {
+  return reqGet<IRecDJlistData>('/personalized/djprogram')
+}
+
 export const getRecPlaylist = async () => {
   return reqGet<IRecPlaylistData>("/personalized");
 };
 
 export const getNewAlbum = async () => {
-  return reqGet<INewAlbumData>("/top/album");
+  return reqGet<INewAlbumData>("/album/newest");
 };
 
 export const getToplist = async () => {
@@ -33,6 +37,4 @@ export const getPlaylist = async (id: number) => {
   return reqGet<ITopPlayData>(`/playlist/detail?&id=${id}`);
 };
 
-// export const getSinger = async () => {
-//   return reqGet<ISingerData>("/artist/list");
-// };
+
