@@ -78,6 +78,11 @@ export interface ITopSong {
   ar: Array<Artist>;
   arStr?: string;
   dt: number;
+  alia: Array<string>;
+  aliaStr: string;
+  al?: {
+    picUrl: string
+  }
 }
 
 export interface IToplist {

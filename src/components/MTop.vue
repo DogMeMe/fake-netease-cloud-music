@@ -105,6 +105,7 @@ export default {
           height: 70px;
           display: inline-block;
           position: relative;
+          text-decoration: none;
           &.active,
           &:hover {
             color: #fff;

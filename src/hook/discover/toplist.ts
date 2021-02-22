@@ -13,11 +13,13 @@ export const useToplist = () => {
     if (res?.playlist) {
       toplist.value = res.playlist;
       toplist.value.tracks = res.playlist.tracks.map(item => {
-          item.arStr = item.ar.reduce((pre, cur) => {
-            return `${pre}${pre ? '/' : ''}${cur.name}`
-          }, '')
-          console.log(item.arStr)
-          return item
+        item.aliaStr = item.alia.reduce((pre, cur) => {
+          return `${pre}${pre ? '/' : ''}${cur}`
+        }, '')
+        item.arStr = item.ar.reduce((pre, cur) => {
+          return `${pre}${pre ? '/' : ''}${cur.name}`
+        }, '')
+        return item
       })
       toplist.value.updateFrequency = selectedFrequency.value;
     }

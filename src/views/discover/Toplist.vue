@@ -92,13 +92,38 @@
           </thead>
           <tbody>
             <tr
-              v-for="({ id, name, dt, arStr }, index) in toplist.tracks"
+              v-for="(
+                { id, name, dt, arStr, aliaStr, al }, index
+              ) in toplist.tracks"
               :key="id"
             >
-              <td>{{ index + 1 }}</td>
-              <td>{{ name }}</td>
-              <td>{{ formatDuration(dt) }}</td>
-              <td>{{ arStr }}</td>
+              <td class="song-order">
+                <span>{{ index + 1 }}</span>
+              </td>
+              <td>
+                <router-link v-if="al && index < 3"  class="song-pic" to="/song">
+                  <img :src="al.picUrl" />
+                </router-link>
+                <span class="play tb-bg"></span>
+                <span>
+                  <router-link to="/song">{{ name }}</router-link>
+                  <span v-if="aliaStr" class="alias"> （{{ aliaStr }}） </span>
+                </span>
+              </td>
+              <td class="song-dur">
+                <span>{{ formatDuration(dt) }}</span>
+                <div class="oper">
+                  <a class="icon-bg add" title="添加到播放列表" />
+                  <a class="tb-bg collect" title="收藏" />
+                  <a class="tb-bg share" title="分享" />
+                  <a class="tb-bg download" title="下载" />
+                </div>
+              </td>
+              <td>
+                <router-link to="/artist">
+                  {{ arStr }}
+                </router-link>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -128,7 +153,7 @@ export default {
       toplist,
       formatDate,
       getByToptype,
-      formatDuration
+      formatDuration,
     };
   },
 };
@@ -288,7 +313,7 @@ export default {
     }
   }
   .detail-songs {
-    padding: 0 40px 30px 40px;
+    padding: 0 30px 40px 40px;
     .r-tit {
       ::v-deep .title {
         cursor: text;
@@ -310,6 +335,7 @@ export default {
     table {
       width: 100%;
       border: 1px solid #d9d9d9;
+      table-layout: fixed;
       thead {
         tr {
           .first {
@@ -324,14 +350,126 @@ export default {
             text-align: left;
             font-weight: normal;
             color: #666;
-            box-sizing: border-box;
-
             .wp {
               padding: 8px 10px;
               height: 18px;
               line-height: 18px;
               padding: 8px 10px;
               background-position: 0 -56px;
+            }
+            &.w2-1 {
+              width: 100px;
+            }
+            &.w3-1 {
+              width: 26%;
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          &:hover {
+            .song-dur {
+              & > span {
+                display: none;
+              }
+              .oper {
+                display: block;
+                word-break: keep-all;
+              }
+            }
+          }
+          &:nth-of-type(2n + 1) {
+            td {
+              background-color: #f7f7f7;
+            }
+          }
+          td {
+            padding: 6px 10px;
+            line-height: 18px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .song-pic {
+              float: left;
+              height: 50px;
+              img {
+                width: 50px;
+                height: 50px;
+                margin-right: 14px;
+              }
+              & ~ .play{
+                margin-top: 17px;
+                & ~ span {
+                  margin-top: 16px;
+                  float: left;
+                }
+              }
+            }
+            &.song-order {
+              span {
+                width: 25px;
+                text-align: center;
+                color: #999;
+                display: inline-block;
+              }
+            }
+            &.song-dur {
+              color: #666;
+            }
+            .play {
+              width: 17px;
+              height: 17px;
+              cursor: pointer;
+              background-position: 0 -103px;
+              float: left;
+              margin-right: 8px;
+              &:hover {
+                background-position: 0 -128px;
+              }
+            }
+            .alias {
+              color: #aeaeae;
+            }
+            .oper {
+              display: none;
+              a {
+                overflow: hidden;
+                vertical-align: middle;
+                float: left;
+                width: 18px;
+                height: 16px;
+                margin: 2px 0 0 4px;
+                text-indent: -999px;
+                &.add {
+                  width: 13px;
+                  height: 13px;
+                  background-position: 0 -700px;
+                  margin: 2px 0 0;
+                  &:hover {
+                    background-position: -22px -700px;
+                  }
+                }
+                &.collect {
+                  background-position: 0 -174px;
+                  &:hover {
+                    background-position: -20px -174px;
+                  }
+                }
+                &.share {
+                  background-position: 0 -195px;
+                  &:hover {
+                    background-position: -20px -195px;
+                  }
+                }
+                &.download {
+                  background-position: -81px -174px;
+                  &:hover {
+                    background-position: -104px -174px;
+                  }
+                }
+              }
             }
           }
         }
