@@ -29,7 +29,7 @@
   <div class="g-mn">
     <div class="g-wrap">
       <div class="m-rcmd">
-        <r-title title="热门推荐">
+        <r-title title="热门推荐" more to="/discover/playlist">
           <div class="g-tab" v-if="catHots.length">
             <template v-for="(cat, index) in catHots">
               <router-link
@@ -55,11 +55,11 @@
         </ul>
       </div>
       <div class="m-new">
-        <r-title title="新碟上架" />
+        <r-title title="新碟上架" more to="/discover/album" />
         <swipe-5 class="new-album" :list="newAlbum" />
       </div>
       <div class="m-list">
-        <r-title title="榜单" />
+        <r-title title="榜单" more to="/discover/toplist" />
         <div class="list-wrap">
           <m-toplist
             v-for="{ id, name, ToplistType, coverImgUrl, tracks } in toplist"
@@ -79,9 +79,7 @@
         </p>
         <a class="btn r-bg">用户登录</a>
       </div>
-      <div class="singer">
-
-      </div>
+      <div class="singer"></div>
       <div class="dj"></div>
     </div>
   </div>
@@ -92,7 +90,7 @@ import {
   useCatHotlist,
   useToplist,
   useNewAlbum,
-  useRecList
+  useRecList,
 } from "@/hook/discover/recommend";
 import RTitle from "@/components/RTitle.vue";
 import MRecList from "@/components/MRecList.vue";
@@ -108,7 +106,6 @@ export default defineComponent({
     const { recList } = useRecList();
     const { newAlbum } = useNewAlbum();
     const { toplist } = useToplist();
-    // const { singer } = useSinger();
     return {
       banner,
       total,
@@ -120,7 +117,6 @@ export default defineComponent({
       recList,
       newAlbum,
       toplist,
-      // singer
     };
   },
 });

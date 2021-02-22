@@ -39,8 +39,8 @@ export interface IRecDJlist {
   name: string;
   picUrl: string;
   program: {
-    adjustedPlayCount: number
-  }
+    adjustedPlayCount: number;
+  };
 }
 
 export interface IRecPlaylistData extends IResponse {
@@ -55,7 +55,8 @@ export interface Artist {
   id: number;
   followed?: boolean;
   name: string;
-  topicPerson: number;
+  topicPerson?: number;
+  alias: Array<string>
 }
 
 export interface IAlbum {
@@ -67,34 +68,48 @@ export interface IAlbum {
 
 export interface INewAlbumData extends IResponse {
   albums: Array<IAlbum>;
+  total?: number;
 }
 
-type ToplistType = "S" | "O" | "N";
-
+type ToplistType = "S" | "O" | "N" | "H";
 export interface ITopSong {
   id: number;
   name: string;
+  ar: Array<Artist>;
+  arStr?: string;
+  dt: number;
 }
 
 export interface IToplist {
   id: number;
   name: string;
-  ToplistType: ToplistType;
+  ToplistType?: ToplistType;
   coverImgUrl: string;
   tracks: Array<ITopSong>;
+  updateFrequency: string;
 }
 
 export interface IToplistData extends IResponse {
   list: Array<IToplist>;
 }
 
+export interface ITopPlay {
+  id: number;
+  name: string;
+  ToplistType: ToplistType;
+  tracks: Array<ITopSong>;
+  commentCount: number;
+  subscribedCount: number;
+  shareCount: number;
+  playCount: number;
+  trackCount: number;
+  coverImgUrl: string;
+  updateTime: number;
+  updateFrequency: string;
+}
+
 export interface ITopPlayData extends IResponse {
-  playlist: {
-    id: number;
-    name: string;
-    ToplistType: ToplistType;
-    tracks: Array<ITopSong>;
-  };
+  playlist: ITopPlay;
 }
 
 export interface IPlaylist {
@@ -105,26 +120,26 @@ export interface IPlaylist {
     id: number;
     nickname: string;
     avatarDetail?: {
-      identityIconUrl: string
-    }
-  },
-  coverImgUrl: string
+      identityIconUrl: string;
+    };
+  };
+  coverImgUrl: string;
 }
 
 export interface IPlaylistData extends IResponse {
   cat: string;
   playlists: Array<IPlaylist>;
-  more: boolean,
-  total: number
+  more: boolean;
+  total: number;
 }
 
 export interface ICategory {
   category: number;
-  name: string
+  name: string;
 }
 
-export interface ICategorys{
-  [prop: string]: Array<ICategory>
+export interface ICategorys {
+  [prop: string]: Array<ICategory>;
 }
 
 export interface ICategoryData extends IResponse {

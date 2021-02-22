@@ -1,4 +1,4 @@
-import { getPlaylistCateList, getPlaylist } from "@/api/discover/playlist"
+import { getPlaylistCateList, getPlaylist } from "@/api/discover"
 import { ICategory, IPlaylist, ICategorys } from "@/model/discover"
 import { computed, onMounted, reactive, Ref, ref, toRefs } from "vue"
 
@@ -17,7 +17,7 @@ export const usePlaylistCateList = () => {
                 }
                 subs.push(sub)
                 categoryObj.value[category] = subs
-
+                
             })
         }
     })
@@ -61,6 +61,7 @@ export const usePlaylist = (categoryVisible: Ref<boolean>) => {
     }
     const getByCate = (category: string) => {
         tag.value = category
+        current.value = 1
         categoryVisible.value = false
         _getPlaylist()
     }

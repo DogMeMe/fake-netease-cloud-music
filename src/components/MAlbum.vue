@@ -1,7 +1,8 @@
 <template>
-  <li class="album r-bg">
+  <li class="album" :class="{ 'r-bg': bg }">
     <router-link to="/album" class="cover-bg album-wrap">
-      <img :src="pic" />
+      <img class="album-pic" :src="pic" />
+      <a class="iconall-bg" title="播放" />
     </router-link>
     <p class="a-row name">
       <router-link to="/album" :title="name">
@@ -18,6 +19,7 @@
 
 <script lang="ts">
 import { computed } from "vue";
+import { useRoute } from "vue-router";
 export default {
   name: "MAlbum",
   props: {
@@ -40,8 +42,13 @@ export default {
         return `${pre}${pre ? "/" : ""}${cur.name}`;
       }, "");
     });
+    const route = useRoute();
+    const bg = computed(() => {
+      return route.path === "/discover/recommend" || route.path === "/discover";
+    });
     return {
       artiststr,
+      bg,
     };
   },
 };
@@ -60,8 +67,20 @@ export default {
     background-position: 0 -570px;
     display: block;
     margin-bottom: 7px;
+    position: relative;
+    &:hover .iconall-bg {
+      visibility: visible;
+    }
+    .iconall-bg {
+      left: 72px;
+      width: 22px;
+      height: 22px;
+      background-position: 0 -85px;
+      position: absolute;
+      bottom: 5px;
+      visibility: hidden;
+    }
     img {
-      width: 100px;
       height: 100px;
       display: block;
     }

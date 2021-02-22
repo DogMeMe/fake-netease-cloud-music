@@ -2,54 +2,58 @@
   background: url("~@/assets/frame/topbar.png") no-repeat;
 }
 
-.lng-bg{
-    background: url('~@/assets/layer/layer.png') no-repeat;
+.lng-bg {
+  background: url("~@/assets/layer/layer.png") no-repeat;
 }
 
-.ban-bg{
-  background: url('~@/assets/discover/banner.png') no-repeat;
+.ban-bg {
+  background: url("~@/assets/discover/banner.png") no-repeat;
 }
 
-.foot-bg{
-  background: url('~@/assets/foot/foot_enter.png') no-repeat; 
+.foot-bg {
+  background: url("~@/assets/foot/foot_enter.png") no-repeat;
   background-size: 110px 552px;
 }
 
-.foot-tbg{
-  background: url('~@/assets/foot/foot_enter_tt.png') no-repeat; 
+.foot-tbg {
+  background: url("~@/assets/foot/foot_enter_tt.png") no-repeat;
   background-size: 180px 139px;
 }
 
-.sprite-bg{
-  background: url('~@/assets/layer/sprite.png') no-repeat; 
+.sprite-bg {
+  background: url("~@/assets/layer/sprite.png") no-repeat;
 }
 
-.r-bg{
-  background: url('~@/assets/discover/index.png') no-repeat;
+.r-bg {
+  background: url("~@/assets/discover/index.png") no-repeat;
 }
 
-.iconall-bg{
-  background: url('~@/assets/frame/iconall.png') no-repeat;
+.iconall-bg {
+  background: url("~@/assets/frame/iconall.png") no-repeat;
 }
 
-.cover-bg{
+.cover-bg {
   background: url("~@/assets/discover/coverall.png") no-repeat;
 }
 
-.icon-bg{
-  background: url('~@/assets/frame/icon.png') no-repeat;
+.icon-bg {
+  background: url("~@/assets/frame/icon.png") no-repeat;
 }
 
-.button-bg{
-  background: url('~@/assets/frame/button.png') no-repeat;
+.button-bg {
+  background: url("~@/assets/frame/button.png") no-repeat;
 }
 
-.button2-bg{
-  background: url('~@/assets/frame/button2.png') no-repeat;
+.button2-bg {
+  background: url("~@/assets/frame/button2.png") no-repeat;
 }
 
-.sltlyr-bg{
+.sltlyr-bg {
   background: url("~@/assets/discover/sltlyr.png") no-repeat;
+}
+
+.tb-bg{
+  background: url("~@/assets/discover/table.png") no-repeat;
 }
 
 input {
@@ -66,3 +70,14 @@ input {
   margin: 0 auto;
 }
 
+.g-bd {
+  width: 980px;
+  margin: 0 auto;
+  min-height: 700px;
+  background-color: #fff;
+  border: 1px solid #d3d3d3;
+  border-width: 0 1px;
+  padding: 40px 39px;
+  box-sizing: border-box;
+  position: relative;
+}

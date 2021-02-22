@@ -11,9 +11,9 @@ import {
   getRecPlaylist,
   getNewAlbum,
   getToplist,
-  getPlaylist,
+  getPlaylistDetail,
   getRecDJlist
-} from "@/api/discover/recommend";
+} from "@/api/discover";
 import { IBanner } from "@/model/discover";
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import Personal from "@/config/personal";
@@ -122,7 +122,7 @@ export const useToplist = () => {
     if (res?.list) {
       toplist.value = res.list.splice(0, 3);
       toplist.value.forEach(async ({ id }, index) => {
-        const songRes = await getPlaylist(id);
+        const songRes = await getPlaylistDetail(id);
         if (songRes?.playlist) {
           toplist.value[index].tracks = songRes.playlist.tracks.splice(0, 10);
         }
