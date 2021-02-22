@@ -165,15 +165,13 @@ export default {
   display: flex;
   .top-names {
     width: 240px;
-    padding-top: 40px;
-    position: relative;
-    top: -20px;
+    padding-top: 20px;
     h2 {
       padding: 0 10px 12px 15px;
       font-size: 14px;
       color: #000;
       font-family: simsun, 宋体;
-      margin-top: 20px;
+      padding-top: 20px;
     }
     li {
       padding: 10px 0 10px 20px;

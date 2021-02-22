@@ -1,9 +1,27 @@
+
 <template>
-  <div class="m-up sprite-bg">回到顶部</div>
+  <div v-show="visible" class="m-up sprite-bg" @click="toUp">回到顶部</div>
 </template>
 <script lang="ts">
+import { onMounted, ref } from "vue";
 export default {
-  name: "MUp"
+  name: "MUp",
+  setup() {
+    const toUp = () => {
+      window.document.documentElement.scrollTop = 0;
+    };
+    const visible = ref(false);
+    onMounted(() => {
+      window.addEventListener("scroll", () => {
+        visible.value =
+          window.document.documentElement.scrollTop > 0;
+      });
+    });
+    return {
+      toUp,
+      visible,
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>
