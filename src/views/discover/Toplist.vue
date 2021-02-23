@@ -92,23 +92,26 @@
           </thead>
           <tbody>
             <tr
-              v-for="(
-                { id, name, dt, arStr, aliaStr, al }, index
-              ) in toplist.tracks"
+              v-for="({ id, name, dt, arStr, aliaStr, al },
+              index) in toplist.tracks"
               :key="id"
             >
               <td class="song-order">
                 <span>{{ index + 1 }}</span>
               </td>
-              <td>
-                <router-link v-if="al && index < 3"  class="song-pic" to="/song">
+              <td class="song-name">
+                <router-link v-if="al && index < 3" class="song-pic" to="/song">
                   <img :src="al.picUrl" />
                 </router-link>
-                <span class="play tb-bg"></span>
-                <span>
-                  <router-link to="/song">{{ name }}</router-link>
-                  <span v-if="aliaStr" class="alias"> （{{ aliaStr }}） </span>
-                </span>
+                <p>
+                  <span class="play tb-bg"></span>
+                  <span>
+                    <router-link to="/song">{{ name }}</router-link>
+                    <span v-if="aliaStr" class="alias">
+                      （{{ aliaStr }}）
+                    </span>
+                  </span>
+                </p>
               </td>
               <td class="song-dur">
                 <span>{{ formatDuration(dt) }}</span>
@@ -133,8 +136,8 @@
 </template>
 <script lang="ts">
 import { useToplist } from "@/hook/discover/toplist";
-import { formatDate, formatDuration } from "@/utils/common";
 import RTitle from "@/components/RTitle.vue";
+import { getCurrentInstance } from "vue";
 export default {
   components: { RTitle },
   name: "Toplist",
@@ -146,6 +149,8 @@ export default {
       toplist,
       getByToptype,
     } = useToplist();
+    const $this = getCurrentInstance();
+    const formatDate = $this?.appContext.config.globalProperties.formatDate;
     return {
       mediaToplist,
       cloudMusicToplist,
@@ -153,7 +158,6 @@ export default {
       toplist,
       formatDate,
       getByToptype,
-      formatDuration,
     };
   },
 };
@@ -397,12 +401,8 @@ export default {
                 height: 50px;
                 margin-right: 14px;
               }
-              & ~ .play{
+              & ~ p {
                 margin-top: 17px;
-                & ~ span {
-                  margin-top: 16px;
-                  float: left;
-                }
               }
             }
             &.song-order {
@@ -416,20 +416,28 @@ export default {
             &.song-dur {
               color: #666;
             }
-            .play {
-              width: 17px;
-              height: 17px;
-              cursor: pointer;
-              background-position: 0 -103px;
-              float: left;
-              margin-right: 8px;
-              &:hover {
-                background-position: 0 -128px;
+            &.song-name {
+              p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                .play {
+                  width: 17px;
+                  height: 17px;
+                  cursor: pointer;
+                  background-position: 0 -103px;
+                  float: left;
+                  margin-right: 8px;
+                  &:hover {
+                    background-position: 0 -128px;
+                  }
+                }
+                .alias {
+                  color: #aeaeae;
+                }
               }
             }
-            .alias {
-              color: #aeaeae;
-            }
+
             .oper {
               display: none;
               a {

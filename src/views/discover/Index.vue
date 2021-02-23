@@ -4,8 +4,9 @@
 <script lang="ts">
 export default {
   name: "Discover",
-  data() {
-    return {};
+  setup() {
+    return {
+    };
   },
 };
 </script>

@@ -44,7 +44,6 @@
 </template>
 <script lang="ts">
 import Login from "@/components/Login.vue";
-import { ref } from "vue";
 import { useRoute } from "vue-router";
 export default {
   name: "MTop",

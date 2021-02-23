@@ -58,6 +58,12 @@ export default {
       default: 8,
     },
   },
+  emits: {
+    'to-page': (page: number) => {
+      if(page > 0) return true
+      return false
+    }
+  },
   setup(props: any, ctx: SetupContext) {
     const showItem = (i: number): boolean => {
       if (
