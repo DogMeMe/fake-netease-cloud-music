@@ -4,12 +4,12 @@
       <img class="album-pic" :src="pic" />
       <a class="iconall-bg" title="播放" />
     </router-link>
-    <p class="a-row name">
+    <p class="name row1">
       <router-link to="/album" :title="name">
         {{ name }}
       </router-link>
     </p>
-    <p class="a-row artists">
+    <p class="artists row1">
       <router-link to="/artist" :title="artiststr">
         {{ artiststr }}
       </router-link>
@@ -85,10 +85,7 @@ export default {
       display: block;
     }
   }
-  .a-row {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .row1 {
     width: 90%;
     line-height: 18px;
     &.name {

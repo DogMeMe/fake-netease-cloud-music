@@ -17,7 +17,7 @@
         <span class="order" :class="index < 3 ? 'no-top' : ''">
           {{ index + 1 }}
         </span>
-        <router-link to="/song" class="name" :title="name">
+        <router-link to="/song" class="row1" :title="name">
           {{ name }}
         </router-link>
         <div class="oper">
@@ -108,6 +108,7 @@ export default {
     li {
       height: 32px;
       line-height: 32px;
+      display: flex;
       .order {
         padding-left: 15px;
         width: 35px;
@@ -122,6 +123,12 @@ export default {
         .oper {
           display: block;
         }
+        .row1{
+          width: 96px;
+        }
+      }
+      .row1{
+        width: 170px;
       }
       .oper {
         display: none;

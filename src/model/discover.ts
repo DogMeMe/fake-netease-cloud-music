@@ -56,7 +56,7 @@ export interface Artist {
   followed?: boolean;
   name: string;
   topicPerson?: number;
-  alias: Array<string>
+  alias: Array<string>;
 }
 
 export interface IAlbum {
@@ -81,8 +81,8 @@ export interface ITopSong {
   alia: Array<string>;
   aliaStr: string;
   al?: {
-    picUrl: string
-  }
+    picUrl: string;
+  };
 }
 
 export interface IToplist {
@@ -150,4 +150,42 @@ export interface ICategorys {
 export interface ICategoryData extends IResponse {
   sub: Array<ICategory>;
   categories: Array<string>;
+}
+
+export interface IProgram {
+  id: number;
+  name: string;
+  coverUrl: string;
+  radio: {
+    category: string;
+    name: string;
+  };
+}
+
+export interface IRecProgramData extends IResponse {
+  programs: Array<IProgram>;
+  name: string;
+  more: boolean;
+}
+
+export interface IDJTop {
+  step: number;
+  icon: string;
+  program: IProgram;
+  rank: number;
+  lastRank: number;
+}
+export interface IDJTopData extends IResponse{
+  updateTime: number;
+  toplist: Array<IDJTop>
+}
+
+export interface IDJCategory {
+  id: number;
+  name: string;
+  picWebUrl: string
+}
+
+export interface IDJCategoryData extends IResponse {
+  categories: Array<IDJCategory>
 }

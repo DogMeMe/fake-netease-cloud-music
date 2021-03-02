@@ -16,14 +16,14 @@
       </div>
     </router-link>
     <div class="desc">
-      <p class="name">
+      <p class="name row1">
         <router-link to="/playlist">
           {{ name }}
         </router-link>
       </p>
       <p class="singer">
         <span>by</span>
-        <router-link to="/singer">{{ creatorName }}</router-link>
+        <router-link class="row1" to="/singer">{{ creatorName }}</router-link>
         <img class="icon" :src="icon" />
       </p>
     </div>
@@ -106,9 +106,6 @@ export default {
       font-size: 14px;
       color: #000;
       line-height: 1.4;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       a {
         font-size: 14px;
         color: #000;
@@ -122,9 +119,6 @@ export default {
       }
       a {
         max-width: 76%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         margin: 0 3px;
       }
       .icon {

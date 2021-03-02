@@ -5,7 +5,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Discover",
-    redirect: '/discover',
+    redirect: "/discover",
     component: () =>
       import(/* webpackChunkName: "discover" */ "@/views/discover/Index.vue"),
     children: [
@@ -88,12 +88,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "Download",
     component: () =>
       import(/* webpackChunkName: "discover" */ "@/views/download/Index.vue"),
-  }
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes
 });
 
 export default router;

@@ -8,6 +8,9 @@ import {
   ITopPlayData,
   ICategoryData,
   IPlaylistData,
+  IRecProgramData,
+  IDJTopData,
+  IDJCategoryData,
 } from "@/model/discover";
 import { reqGet } from "@/utils/http";
 
@@ -53,4 +56,25 @@ export const getAlbumlist = async(offset = 0, area = "全部") => {
   return reqGet<INewAlbumData>(
     `/album/new?area=${area}&offset=${offset}&limit=35`
   );
+}
+
+export const getRecProgram = () => {
+  return reqGet<IRecProgramData>('/program/recommend')
+}
+
+export const getDJTop = () => {
+  return reqGet<IDJTopData>('/dj/program/toplist?limit=10')
+}
+
+export const getDJCategory = () => {
+  return reqGet<IDJCategoryData>('/dj/catelist')
+}
+
+export const djtest = () => {
+  // /dj/recommend/type
+  reqGet('/dj/radio/hot?cateId=3')
+}
+
+export const getSingerCategory = () => {
+  reqGet('/artist/list?type=-1')
 }

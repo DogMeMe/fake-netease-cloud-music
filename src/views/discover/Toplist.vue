@@ -96,10 +96,10 @@
               index) in toplist.tracks"
               :key="id"
             >
-              <td class="song-order">
+              <td class="song-order row1">
                 <span>{{ index + 1 }}</span>
               </td>
-              <td class="song-name">
+              <td class="song-name row1">
                 <router-link v-if="al && index < 3" class="song-pic" to="/song">
                   <img :src="al.picUrl" />
                 </router-link>
@@ -390,9 +390,6 @@ export default {
             padding: 6px 10px;
             line-height: 18px;
             text-align: left;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             .song-pic {
               float: left;
               height: 50px;
@@ -418,9 +415,6 @@ export default {
             }
             &.song-name {
               p {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
                 .play {
                   width: 17px;
                   height: 17px;
