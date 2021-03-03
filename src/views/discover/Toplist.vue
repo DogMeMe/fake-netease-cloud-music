@@ -1,5 +1,5 @@
 <template>
-  <div class="g-bd">
+  <div class="g-bd g-wrap3">
     <div class="top-names">
       <h2>云音乐特色榜</h2>
       <ul>
@@ -163,311 +163,306 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.g-bd {
-  background: url("~@/assets/discover/topwrap.png");
-  padding: 0;
-  display: flex;
-  .top-names {
-    width: 240px;
+.top-names {
+  width: 240px;
+  padding-top: 20px;
+  h2 {
+    padding: 0 10px 12px 15px;
+    font-size: 14px;
+    color: #000;
+    font-family: simsun, 宋体;
     padding-top: 20px;
-    h2 {
-      padding: 0 10px 12px 15px;
-      font-size: 14px;
-      color: #000;
-      font-family: simsun, 宋体;
-      padding-top: 20px;
+  }
+  li {
+    padding: 10px 0 10px 20px;
+    height: 42px;
+    cursor: pointer;
+    &:hover {
+      background: #f1f1f1;
     }
-    li {
-      padding: 10px 0 10px 20px;
-      height: 42px;
-      cursor: pointer;
-      &:hover {
-        background: #f1f1f1;
+    &.selected {
+      background: #e6e6e6;
+    }
+    img {
+      display: block;
+      height: 40px;
+      width: 40px;
+      float: left;
+    }
+    p {
+      padding-left: 50px;
+      &.name {
+        color: #000;
+        margin-top: 2px;
+        margin-bottom: 8px;
       }
-      &.selected {
-        background: #e6e6e6;
+      &.update {
+        color: #999;
       }
+    }
+  }
+}
+.top-detail {
+  width: 740px;
+  padding-bottom: 50px;
+  .detail-wrap {
+    padding: 40px;
+    overflow: hidden;
+    .cover {
+      padding: 3px;
+      border: 1px solid #ccc;
+      float: left;
+      overflow: hidden;
       img {
-        display: block;
-        height: 40px;
-        width: 40px;
-        float: left;
+        width: 150px;
+        height: 150px;
       }
-      p {
-        padding-left: 50px;
-        &.name {
-          color: #000;
-          margin-top: 2px;
-          margin-bottom: 8px;
+    }
+    .detail-main {
+      margin-left: 187px;
+      h2 {
+        margin: 16px 0 4px;
+        font-weight: normal;
+        line-height: 24px;
+        font-size: 20px;
+        margin: 16px 0 4px;
+      }
+      .update {
+        margin: 0 0 20px;
+        line-height: 35px;
+        i {
+          width: 13px;
+          height: 13px;
+          background-position: -18px -682px;
+          margin: 9px 0 0 3px;
+          display: inline-block;
         }
-        &.update {
+        .update-time {
+          margin-left: 5px;
+          color: #666;
+        }
+        .update-frequency {
           color: #999;
         }
       }
-    }
-  }
-  .top-detail {
-    width: 740px;
-    padding-bottom: 50px;
-    .detail-wrap {
-      padding: 40px;
-      overflow: hidden;
-      .cover {
-        padding: 3px;
-        border: 1px solid #ccc;
-        float: left;
-        overflow: hidden;
-        img {
-          width: 150px;
-          height: 150px;
-        }
-      }
-      .detail-main {
-        margin-left: 187px;
-        h2 {
-          margin: 16px 0 4px;
-          font-weight: normal;
-          line-height: 24px;
-          font-size: 20px;
-          margin: 16px 0 4px;
-        }
-        .update {
-          margin: 0 0 20px;
-          line-height: 35px;
+      .detail-count {
+        a {
+          height: 31px;
+          line-height: 30px;
+          font-family: simsun, 宋体;
+          min-width: 23px;
+          margin-right: 6px;
+          float: left;
+          overflow: hidden;
+          padding: 0 5px 0 0;
+          background-position: right -1020px;
           i {
-            width: 13px;
-            height: 13px;
-            background-position: -18px -682px;
-            margin: 9px 0 0 3px;
-            display: inline-block;
-          }
-          .update-time {
-            margin-left: 5px;
-            color: #666;
-          }
-          .update-frequency {
-            color: #999;
-          }
-        }
-        .detail-count {
-          a {
+            font-style: normal;
             height: 31px;
             line-height: 30px;
-            font-family: simsun, 宋体;
-            min-width: 23px;
-            margin-right: 6px;
-            float: left;
             overflow: hidden;
-            padding: 0 5px 0 0;
-            background-position: right -1020px;
+            min-width: 23px;
+            float: left;
+            padding-right: 2px;
+            padding-left: 28px;
+          }
+          &.play {
+            background-position: right -428px;
+            margin-right: 0;
             i {
-              font-style: normal;
-              height: 31px;
-              line-height: 30px;
-              overflow: hidden;
-              min-width: 23px;
-              float: left;
-              padding-right: 2px;
-              padding-left: 28px;
-            }
-            &.play {
-              background-position: right -428px;
-              margin-right: 0;
-              i {
-                padding: 0 7px 0 8px;
-                line-height: 31px;
-                color: #fff;
-                background-position: 0 -387px;
-                display: inline-block;
-                .ply {
-                  float: left;
-                  width: 20px;
-                  height: 18px;
-                  margin: 6px 2px 2px 0;
-                  background-position: 0 -1622px;
-                  overflow: hidden;
-                }
+              padding: 0 7px 0 8px;
+              line-height: 31px;
+              color: #fff;
+              background-position: 0 -387px;
+              display: inline-block;
+              .ply {
+                float: left;
+                width: 20px;
+                height: 18px;
+                margin: 6px 2px 2px 0;
+                background-position: 0 -1622px;
+                overflow: hidden;
               }
             }
-            &.add {
-              min-width: 23px;
-              width: 31px;
-              margin-left: -3px;
-              padding-right: 0;
-              background-position: 0 -1588px;
-              margin-right: 5px;
-            }
-            &.sub i {
-              background-position: 0 -977px;
-            }
-            &.share i {
-              background-position: 0 -1225px;
-            }
-            &.download i {
-              background-position: 0 -2761px;
-            }
-            &.comment i {
-              background-position: 0 -1465px;
-            }
+          }
+          &.add {
+            min-width: 23px;
+            width: 31px;
+            margin-left: -3px;
+            padding-right: 0;
+            background-position: 0 -1588px;
+            margin-right: 5px;
+          }
+          &.sub i {
+            background-position: 0 -977px;
+          }
+          &.share i {
+            background-position: 0 -1225px;
+          }
+          &.download i {
+            background-position: 0 -2761px;
+          }
+          &.comment i {
+            background-position: 0 -1465px;
           }
         }
       }
     }
   }
-  .detail-songs {
-    padding: 0 30px 40px 40px;
-    .r-tit {
-      ::v-deep .title {
-        cursor: text;
+}
+.detail-songs {
+  padding: 0 30px 40px 40px;
+  .r-tit {
+    ::v-deep .title {
+      cursor: text;
+    }
+    .song-count {
+      margin: 9px 0 0 20px;
+      display: inline-block;
+      color: #666;
+    }
+    .play-count {
+      margin-top: 5px;
+      margin-right: -10px;
+      color: #666;
+      span {
+        color: #c20c0c;
       }
-      .song-count {
-        margin: 9px 0 0 20px;
-        display: inline-block;
-        color: #666;
-      }
-      .play-count {
-        margin-top: 5px;
-        margin-right: -10px;
-        color: #666;
-        span {
-          color: #c20c0c;
+    }
+  }
+  table {
+    width: 100%;
+    border: 1px solid #d9d9d9;
+    table-layout: fixed;
+    thead {
+      tr {
+        .first {
+          width: 77px;
+        }
+        th {
+          height: 38px;
+          background-color: #f7f7f7;
+          background-position: 0 0;
+          background-repeat: repeat-x;
+          vertical-align: top;
+          text-align: left;
+          font-weight: normal;
+          color: #666;
+          .wp {
+            padding: 8px 10px;
+            height: 18px;
+            line-height: 18px;
+            padding: 8px 10px;
+            background-position: 0 -56px;
+          }
+          &.w2-1 {
+            width: 100px;
+          }
+          &.w3-1 {
+            width: 26%;
+          }
         }
       }
     }
-    table {
-      width: 100%;
-      border: 1px solid #d9d9d9;
-      table-layout: fixed;
-      thead {
-        tr {
-          .first {
-            width: 77px;
-          }
-          th {
-            height: 38px;
-            background-color: #f7f7f7;
-            background-position: 0 0;
-            background-repeat: repeat-x;
-            vertical-align: top;
-            text-align: left;
-            font-weight: normal;
-            color: #666;
-            .wp {
-              padding: 8px 10px;
-              height: 18px;
-              line-height: 18px;
-              padding: 8px 10px;
-              background-position: 0 -56px;
+    tbody {
+      tr {
+        &:hover {
+          .song-dur {
+            & > span {
+              display: none;
             }
-            &.w2-1 {
-              width: 100px;
-            }
-            &.w3-1 {
-              width: 26%;
+            .oper {
+              display: block;
+              word-break: keep-all;
             }
           }
         }
-      }
-      tbody {
-        tr {
-          &:hover {
-            .song-dur {
-              & > span {
-                display: none;
-              }
-              .oper {
-                display: block;
-                word-break: keep-all;
-              }
-            }
-          }
-          &:nth-of-type(2n + 1) {
-            td {
-              background-color: #f7f7f7;
-            }
-          }
+        &:nth-of-type(2n + 1) {
           td {
-            padding: 6px 10px;
-            line-height: 18px;
-            text-align: left;
-            .song-pic {
-              float: left;
+            background-color: #f7f7f7;
+          }
+        }
+        td {
+          padding: 6px 10px;
+          line-height: 18px;
+          text-align: left;
+          .song-pic {
+            float: left;
+            height: 50px;
+            img {
+              width: 50px;
               height: 50px;
-              img {
-                width: 50px;
-                height: 50px;
-                margin-right: 14px;
-              }
-              & ~ p {
-                margin-top: 17px;
-              }
+              margin-right: 14px;
             }
-            &.song-order {
-              span {
-                width: 25px;
-                text-align: center;
-                color: #999;
-                display: inline-block;
-              }
+            & ~ p {
+              margin-top: 17px;
             }
-            &.song-dur {
-              color: #666;
+          }
+          &.song-order {
+            span {
+              width: 25px;
+              text-align: center;
+              color: #999;
+              display: inline-block;
             }
-            &.song-name {
-              p {
-                .play {
-                  width: 17px;
-                  height: 17px;
-                  cursor: pointer;
-                  background-position: 0 -103px;
-                  float: left;
-                  margin-right: 8px;
-                  &:hover {
-                    background-position: 0 -128px;
-                  }
-                }
-                .alias {
-                  color: #aeaeae;
-                }
-              }
-            }
-
-            .oper {
-              display: none;
-              a {
-                overflow: hidden;
-                vertical-align: middle;
+          }
+          &.song-dur {
+            color: #666;
+          }
+          &.song-name {
+            p {
+              .play {
+                width: 17px;
+                height: 17px;
+                cursor: pointer;
+                background-position: 0 -103px;
                 float: left;
-                width: 18px;
-                height: 16px;
-                margin: 2px 0 0 4px;
-                text-indent: -999px;
-                &.add {
-                  width: 13px;
-                  height: 13px;
-                  background-position: 0 -700px;
-                  margin: 2px 0 0;
-                  &:hover {
-                    background-position: -22px -700px;
-                  }
+                margin-right: 8px;
+                &:hover {
+                  background-position: 0 -128px;
                 }
-                &.collect {
-                  background-position: 0 -174px;
-                  &:hover {
-                    background-position: -20px -174px;
-                  }
+              }
+              .alias {
+                color: #aeaeae;
+              }
+            }
+          }
+
+          .oper {
+            display: none;
+            a {
+              overflow: hidden;
+              vertical-align: middle;
+              float: left;
+              width: 18px;
+              height: 16px;
+              margin: 2px 0 0 4px;
+              text-indent: -999px;
+              &.add {
+                width: 13px;
+                height: 13px;
+                background-position: 0 -700px;
+                margin: 2px 0 0;
+                &:hover {
+                  background-position: -22px -700px;
                 }
-                &.share {
-                  background-position: 0 -195px;
-                  &:hover {
-                    background-position: -20px -195px;
-                  }
+              }
+              &.collect {
+                background-position: 0 -174px;
+                &:hover {
+                  background-position: -20px -174px;
                 }
-                &.download {
-                  background-position: -81px -174px;
-                  &:hover {
-                    background-position: -104px -174px;
-                  }
+              }
+              &.share {
+                background-position: 0 -195px;
+                &:hover {
+                  background-position: -20px -195px;
+                }
+              }
+              &.download {
+                background-position: -81px -174px;
+                &:hover {
+                  background-position: -104px -174px;
                 }
               }
             }

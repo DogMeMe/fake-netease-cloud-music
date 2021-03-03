@@ -3,3 +3,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.row2{
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+}

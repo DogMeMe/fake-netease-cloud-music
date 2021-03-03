@@ -22,82 +22,122 @@
         </li>
       </ul>
     </div>
-    <div class="list">
-      <div class="list-recommend list-item">
-        <r-title title="推荐节目" more />
+    <template v-if="typeId">
+      <div class="new-dj">
+        <r-title title="优秀新电台" />
         <ul>
-          <li v-for="{ id, name, coverUrl, radio } in programs" :key="id">
-            <a class="play">
-              <img :src="coverUrl" />
-              <i class="iconall-bg" />
-            </a>
-            <div class="cnt">
-              <a class="row1">{{ name }}</a>
-              <a class="row1">{{ radio.name }}</a>
-            </div>
-            <a class="category">{{ radio.category }}</a>
+          <li v-for="{ id, name, picUrl, rcmdtext } in newDjs" :key="id">
+            <router-link :to="`/dj?${id}`">
+              <img :src="picUrl" />
+            </router-link>
+            <router-link :to="`/dj?${id}`">
+              <h3 class="row2">{{ name }}</h3>
+            </router-link>
+            <p>{{ rcmdtext }}</p>
           </li>
         </ul>
       </div>
-      <div class="list-top list-item">
-        <r-title title="节目排行榜" more />
-        <ul>
-          <li v-for="{ rank, program, step, icon } in toplist" :key="rank">
-            <div class="rank">
-              <p class="rank-num" :class="{ top: rank <= 3 }">
-                {{ padStartN(rank) }}
-              </p>
-              <div class="step">
-                <div class="icon-bg" :class="icon" />
-                <span>{{ step }}</span>
+    </template>
+    <template v-else>
+      <div class="list">
+        <div class="list-recommend list-item">
+          <r-title title="推荐节目" more />
+          <ul>
+            <li v-for="{ id, name, coverUrl, radio } in programs" :key="id">
+              <a class="play">
+                <img :src="coverUrl" />
+                <i class="iconall-bg" />
+              </a>
+              <div class="cnt">
+                <a class="row1">{{ name }}</a>
+                <a class="row1">{{ radio.name }}</a>
               </div>
-            </div>
-            <a class="play">
-              <img :src="program.coverUrl" />
-              <i class="iconall-bg" />
-            </a>
-            <div class="cnt">
-              <a class="row1">{{ program.name }}</a>
-              <a class="row1">{{ program.radio.name }}</a>
+              <a class="category">{{ radio.category }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="list-top list-item">
+          <r-title title="节目排行榜" more />
+          <ul>
+            <li v-for="{ rank, program, step, icon } in toplist" :key="rank">
+              <div class="rank">
+                <p class="rank-num" :class="{ top: rank <= 3 }">
+                  {{ padStartN(rank) }}
+                </p>
+                <div class="step">
+                  <div class="icon-bg" :class="icon" />
+                  <span>{{ step }}</span>
+                </div>
+              </div>
+              <a class="play">
+                <img :src="program.coverUrl" />
+                <i class="iconall-bg" />
+              </a>
+              <div class="cnt">
+                <a class="row1">{{ program.name }}</a>
+                <a class="row1">{{ program.radio.name }}</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dj-wrap" v-for="(djs, key) in showDjs" :key="key">
+        <r-title :title="`${key} • 电台`" more />
+        <ul class="djs">
+          <li
+            class="dj"
+            v-for="{ id, name, picUrl, rcmdtext } in djs"
+            :key="id"
+          >
+            <router-link :to="`/dj?${id}`">
+              <img :src="picUrl" />
+            </router-link>
+            <div class="dj-text">
+              <router-link :to="`/dj?${id}`">
+                <h3>{{ name }}</h3>
+              </router-link>
+              <p>{{ rcmdtext }}</p>
             </div>
           </li>
         </ul>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 <script lang="ts">
-import { ref } from "vue";
 import RTitle from "@/components/RTitle.vue";
 import {
   useDJTop,
   useDJCategory,
   useRecProgram,
-  usedjtest,
+  useDJHome,
+  useDJByCategory,
 } from "@/hook/discover/djradio";
 export default {
   components: { RTitle },
   name: "Djradio",
   setup() {
-    const typeId = ref();
-    const changeType = (id: number) => {
-      typeId.value = id;
-    };
     const { programs } = useRecProgram();
     const { toplist } = useDJTop();
     const { categories } = useDJCategory();
-    usedjtest()
+    const { showDjs } = useDJHome();
+    const { typeId, changeType, newDjs } = useDJByCategory();
     return {
       typeId,
       changeType,
       programs,
       toplist,
       categories,
+      showDjs,
+      newDjs,
     };
   },
 };
 </script>
 <style lang="scss" scoped>
+::v-deep .r-tit .title {
+  font-size: 24px;
+}
 .rd-type {
   margin-bottom: 20px;
   ul {
@@ -266,6 +306,67 @@ export default {
           line-height: 16px;
           padding: 0 6px;
         }
+      }
+    }
+  }
+}
+.dj-wrap {
+  margin-top: 35px;
+  .djs {
+    margin-left: -30px;
+    overflow: hidden;
+    .dj {
+      float: left;
+      width: 435px;
+      height: 120px;
+      margin-left: 30px;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      &:first-of-type,
+      &:nth-of-type(2) {
+        border-bottom: 1px solid #e7e7e7;
+      }
+      img {
+        width: 120px;
+        height: 120px;
+      }
+      .dj-text {
+        margin-left: 20px;
+        h3 {
+          font-size: 18px;
+          margin-bottom: 20px;
+        }
+        p {
+          color: #999;
+        }
+      }
+    }
+  }
+}
+.new-dj {
+  margin-top: 10px;
+  ul {
+    margin: 16px 0 0 -37px;
+    overflow: hidden;
+    li {
+      float: left;
+      width: 150px;
+      margin-left: 37px;
+      img {
+        width: 150px;
+        height: 150px;
+        display: block;
+      }
+      h3 {
+        margin: 13px 0 6px;
+        line-height: 16px;
+        font-size: 14px;
+        font-weight: normal;
+      }
+      p{
+        line-height: 18px;
+        color: #999;
       }
     }
   }

@@ -26,7 +26,7 @@
       <a class="ban-next ban-swh ban-bg" @click="nextBan"></a>
     </div>
   </div>
-  <div class="g-mn">
+  <div class="g-bd g-wrap1">
     <div class="g-wrap">
       <div class="m-rcmd">
         <r-title title="热门推荐" more to="/discover/playlist">
@@ -210,84 +210,78 @@ export default defineComponent({
     }
   }
 }
-.g-mn {
-  width: 980px;
-  margin: 0 auto;
-  overflow: hidden;
-  background: url("~@/assets/frame/wrap1.png") repeat-y 100% 100%;
-  .g-wrap {
-    padding: 20px 20px 40px;
-    box-sizing: border-box;
-    float: left;
-    width: calc(100% - 250px);
-    .m-rcmd {
-      margin-bottom: 35px;
-      .g-tab {
-        float: left;
-        margin: 7px 0 0 10px;
-        a {
-          padding: 0 13px;
-          &:not(:last-child) {
-            border-right: 1px solid #ccc;
-          }
-        }
-      }
-      .g-playlist {
-        margin: 20px 0 0 -42px;
-        overflow: hidden;
-        .playlist {
-          padding-left: 42px;
-          padding-bottom: 30px;
+.g-wrap {
+  padding: 20px 20px 40px;
+  box-sizing: border-box;
+  float: left;
+  width: calc(100% - 250px);
+  .m-rcmd {
+    margin-bottom: 35px;
+    .g-tab {
+      float: left;
+      margin: 7px 0 0 10px;
+      a {
+        padding: 0 13px;
+        &:not(:last-child) {
+          border-right: 1px solid #ccc;
         }
       }
     }
-    .m-new {
-      .new-album {
-        margin: 20px 0 37px;
-        border: 1px solid #d3d3d3;
-        background: #f5f5f5;
-        height: 186px;
-      }
-    }
-    .m-list {
-      .list-wrap {
-        height: 472px;
-        margin-top: 20px;
-        padding-left: 1px;
-        background: url("~@/assets/discover/bill.png");
-        display: flex;
-        .m-list {
-          flex: 1;
-        }
+    .g-playlist {
+      margin: 20px 0 0 -42px;
+      overflow: hidden;
+      .playlist {
+        padding-left: 42px;
+        padding-bottom: 30px;
       }
     }
   }
-  .g-sdl {
-    float: right;
-    width: 250px;
-    .user-profile {
-      height: 126px;
-      background-position: 0 0;
-      .note {
-        width: 205px;
-        margin: 0 auto;
-        padding: 16px 0;
-        line-height: 22px;
+  .m-new {
+    .new-album {
+      margin: 20px 0 37px;
+      border: 1px solid #d3d3d3;
+      background: #f5f5f5;
+      height: 186px;
+    }
+  }
+  .m-list {
+    .list-wrap {
+      height: 472px;
+      margin-top: 20px;
+      padding-left: 1px;
+      background: url("~@/assets/discover/bill.png");
+      display: flex;
+      .m-list {
+        flex: 1;
       }
-      .btn {
-        display: block;
-        width: 100px;
-        height: 31px;
-        line-height: 31px;
-        text-align: center;
-        color: #fff;
-        text-shadow: 0 1px 0 #8a060b;
-        margin: 0 auto;
-        background-position: 0 -195px;
-        &:hover {
-          text-decoration: none;
-          background-position: -110px -195px;
-        }
+    }
+  }
+}
+.g-sdl {
+  float: right;
+  width: 250px;
+  .user-profile {
+    height: 126px;
+    background-position: 0 0;
+    .note {
+      width: 205px;
+      margin: 0 auto;
+      padding: 16px 0;
+      line-height: 22px;
+    }
+    .btn {
+      display: block;
+      width: 100px;
+      height: 31px;
+      line-height: 31px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 1px 0 #8a060b;
+      margin: 0 auto;
+      background-position: 0 -195px;
+      &:hover {
+        text-decoration: none;
+        background-position: -110px -195px;
       }
     }
   }

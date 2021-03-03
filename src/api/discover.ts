@@ -11,6 +11,8 @@ import {
   IRecProgramData,
   IDJTopData,
   IDJCategoryData,
+  IArtistData,
+  IDJData,
 } from "@/model/discover";
 import { reqGet } from "@/utils/http";
 
@@ -52,29 +54,30 @@ export const getPlaylist = async (offset = 0, cat = "全部", order?: string) =>
   );
 };
 
-export const getAlbumlist = async(offset = 0, area = "全部") => {
+export const getAlbumlist = async (offset = 0, area = "全部") => {
   return reqGet<INewAlbumData>(
     `/album/new?area=${area}&offset=${offset}&limit=35`
   );
-}
+};
 
 export const getRecProgram = () => {
-  return reqGet<IRecProgramData>('/program/recommend')
-}
+  return reqGet<IRecProgramData>("/program/recommend");
+};
 
 export const getDJTop = () => {
-  return reqGet<IDJTopData>('/dj/program/toplist?limit=10')
-}
+  return reqGet<IDJTopData>("/dj/program/toplist?limit=10");
+};
 
 export const getDJCategory = () => {
-  return reqGet<IDJCategoryData>('/dj/catelist')
-}
+  return reqGet<IDJCategoryData>("/dj/catelist");
+};
 
-export const djtest = () => {
-  // /dj/recommend/type
-  reqGet('/dj/radio/hot?cateId=3')
-}
+export const getDJByCategory = (type?: number) => {
+  return reqGet<IDJData>(`/dj/recommend/type?type=${type}`);
+};
 
-export const getSingerCategory = () => {
-  reqGet('/artist/list?type=-1')
-}
+export const getArtists = (initial: string, type = -1, area = -1, offset = 0, limit = 100) => {
+  return reqGet<IArtistData>(
+    `/artist/list?type=${type}&area=${area}&limit=${limit}&offset=${offset}&initial=${initial}`
+  );
+};

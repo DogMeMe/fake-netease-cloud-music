@@ -51,17 +51,20 @@ export interface IRecDJlistData extends IResponse {
   result: Array<IRecDJlist>;
 }
 
-export interface Artist {
+export interface IArtist {
   id: number;
   followed?: boolean;
   name: string;
+  accountId?: number;
+  picUrl: string;
+  img1v1Url?: string;
   topicPerson?: number;
   alias: Array<string>;
 }
 
 export interface IAlbum {
   name: string;
-  artists: Array<Artist>;
+  artists: Array<IArtist>;
   picUrl: string;
   id: number;
 }
@@ -75,7 +78,7 @@ type ToplistType = "S" | "O" | "N" | "H";
 export interface ITopSong {
   id: number;
   name: string;
-  ar: Array<Artist>;
+  ar: Array<IArtist>;
   arStr?: string;
   dt: number;
   alia: Array<string>;
@@ -175,17 +178,33 @@ export interface IDJTop {
   rank: number;
   lastRank: number;
 }
-export interface IDJTopData extends IResponse{
+export interface IDJTopData extends IResponse {
   updateTime: number;
-  toplist: Array<IDJTop>
+  toplist: Array<IDJTop>;
 }
 
 export interface IDJCategory {
   id: number;
   name: string;
-  picWebUrl: string
+  picWebUrl: string;
 }
 
 export interface IDJCategoryData extends IResponse {
-  categories: Array<IDJCategory>
+  categories: Array<IDJCategory>;
+}
+
+export interface IDJ {
+  id: number;
+  name: string;
+  picUrl: string;
+  rcmdtext: string;
+}
+
+export interface IDJData extends IResponse {
+  djRadios: Array<IDJ>;
+}
+
+export interface IArtistData extends IResponse {
+  more: boolean;
+  artists: Array<IArtist>;
 }
