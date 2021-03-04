@@ -52,7 +52,7 @@
   background: url("~@/assets/discover/sltlyr.png") no-repeat;
 }
 
-.tb-bg{
+.tb-bg {
   background: url("~@/assets/discover/table.png") no-repeat;
 }
 
@@ -82,20 +82,29 @@ input {
   position: relative;
 }
 
-.g-wrap1{
+.g-wrap1 {
   background: url("~@/assets/frame/wrap1.png");
   padding: 0;
   display: flex;
 }
 
-.g-wrap2{
+.g-wrap2 {
   background: url("~@/assets/frame/wrap2.png");
   padding: 0;
   display: flex;
 }
 
-.g-wrap3{
+.g-wrap3 {
   background: url("~@/assets/frame/wrap3.png");
   padding: 0;
   display: flex;
+}
+
+.zebra-li {
+  width: 424px;
+  height: 40px;
+  padding: 10px 0;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
 }

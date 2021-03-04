@@ -36,10 +36,32 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/discover/djradio",
         name: "Djradio",
-        component: () =>
-          import(
-            /* webpackChunkName: "discover" */ "@/views/discover/Djradio.vue"
-          ),
+        component: {
+          template: '<router-view />'
+        },
+        children: [
+          {
+            path: "/discover/djradio",
+            component: () =>
+              import(
+                /* webpackChunkName: 'discover' */ "@/views/discover/djradio/Index.vue"
+              ),
+          },
+          {
+            path: "/discover/djradio/recommend",
+            component: () =>
+              import(
+                /* webpackChunkName: 'discover' */ "@/views/discover/djradio/Recommend.vue"
+              ),
+          },
+          {
+            path: "/discover/djradio/rank",
+            component: () =>
+              import(
+                /* webpackChunkName: 'discover' */ "@/views/discover/djradio/Rank.vue"
+              ),
+          },
+        ],
       },
       {
         path: "/discover/singer",
@@ -93,7 +115,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;
