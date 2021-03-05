@@ -12,7 +12,7 @@
     </ul>
     <r-title big title="全部新碟">
       <div class="g-tab">
-        <a v-for="(name, key) in areas" @click="getByArea(name)" :key="key">
+        <a v-for="(name, key) in areas" @click="getByArea(key)" :key="key">
           {{ name }}
         </a>
       </div>

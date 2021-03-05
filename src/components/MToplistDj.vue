@@ -69,15 +69,6 @@ export default {
     }
   }
 }
-.category {
-  margin: 1px 0 0 10px;
-  border: 1px solid #999;
-  color: #999;
-  text-decoration: none;
-  height: 16px;
-  line-height: 16px;
-  padding: 0 6px;
-}
 .rank {
   width: 47px;
   text-align: center;
