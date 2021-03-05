@@ -18,7 +18,7 @@
       </ul>
     </div>
     <div class="singers">
-      <r-title title="热门歌手" />
+      <r-title big title="热门歌手" />
       <ul v-if="selected.area >= 0 " class="initial">
         <li
           v-for="{ id, name } in initials"
@@ -143,12 +143,6 @@ export default {
           color: #fff;
         }
       }
-    }
-  }
-  .r-tit {
-    height: 40px;
-    ::v-deep .title {
-      font-size: 24px;
     }
   }
   .artists {

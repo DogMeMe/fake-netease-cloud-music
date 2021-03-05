@@ -32,7 +32,7 @@
           :key="key"
           :to="href"
         >
-          <em :class="{ active: route.path === href }">{{ name }}</em>
+          <em :class="{ active: isActive(href) }">{{ name }}</em>
         </router-link>
       </div>
     </div>
@@ -68,11 +68,16 @@ export default {
       { name: "新碟上架", href: "/discover/album" },
     ];
     const route = useRoute();
-
+    const isActive = (href: string) => {
+      if(href === route.path) return true
+      if(route.path.split('/').length > href.split('/').length && route.path.includes(href) && href.split('/').length > 2) return true
+      return false
+    }
     return {
       navs,
       route,
       disClassify,
+      isActive
     };
   },
 };
@@ -200,8 +205,8 @@ export default {
           line-height: 21px;
           color: #fff;
           font-style: normal;
-          &.active{
-            background: #9B0909;
+          &.active {
+            background: #9b0909;
           }
         }
       }

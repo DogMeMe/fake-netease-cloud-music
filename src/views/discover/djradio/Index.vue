@@ -24,7 +24,7 @@
     </div>
     <template v-if="typeId">
       <div class="new-dj">
-        <r-title title="优秀新电台" />
+        <r-title big title="优秀新电台" />
         <ul>
           <li v-for="{ id, name, picUrl, rcmdtext } in newDjs" :key="id">
             <router-link :to="`/dj?${id}`">
@@ -41,20 +41,24 @@
     <template v-else>
       <div class="list">
         <div class="list-recommend list-item">
-          <r-title title="推荐节目" more />
+          <r-title title="推荐节目" more big to="/discover/djradio/recommend" />
           <ul>
-            <m-rec-dj v-for="program in programs" :key="program.id" :program="program" />
+            <m-rec-dj
+              v-for="program in programs"
+              :key="program.id"
+              :program="program"
+            />
           </ul>
         </div>
         <div class="list-top list-item">
-          <r-title title="节目排行榜" more />
+          <r-title title="节目排行榜" more big to="/discover/djradio/rank" />
           <ul>
             <m-toplist-dj v-for="top in toplist" :key="top.rank" :item="top" />
           </ul>
         </div>
       </div>
       <div class="dj-wrap" v-for="(djs, key) in showDjs" :key="key">
-        <r-title :title="`${key} • 电台`" more />
+        <r-title :title="`${key} • 电台`" more big />
         <ul class="djs">
           <li
             class="dj"
@@ -85,14 +89,14 @@ import {
   useDJHome,
   useDJByCategory,
 } from "@/hook/discover/djradio";
-import MRecDj from '@/components/MRecDj.vue';
-import MToplistDj from '@/components/MToplistDj.vue';
+import MRecDj from "@/components/MRecDj.vue";
+import MToplistDj from "@/components/MToplistDj.vue";
 export default {
   components: { RTitle, MRecDj, MToplistDj },
   name: "Djradio",
   setup() {
     const { programs } = useRecProgram();
-    const { toplist } = useDJTop();
+    const { toplist } = useDJTop(10);
     const { categories } = useDJCategory();
     const { showDjs } = useDJHome();
     const { typeId, changeType, newDjs } = useDJByCategory();
@@ -109,9 +113,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-::v-deep .r-tit .title {
-  font-size: 24px;
-}
 .rd-type {
   margin-bottom: 20px;
   ul {
@@ -226,7 +227,7 @@ export default {
         font-size: 14px;
         font-weight: normal;
       }
-      p{
+      p {
         line-height: 18px;
         color: #999;
       }

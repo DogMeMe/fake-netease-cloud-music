@@ -1,6 +1,6 @@
 <template>
   <div class="g-bd">
-    <r-title title="热门新碟" />
+    <r-title big title="热门新碟" />
     <ul class="album-list">
       <m-album
         v-for="{ id, name, artists, picUrl } in newAlbum"
@@ -10,7 +10,7 @@
         :artists="artists"
       />
     </ul>
-    <r-title title="全部新碟">
+    <r-title big title="全部新碟">
       <div class="g-tab">
         <a v-for="(name, key) in areas" @click="getByArea(name)" :key="key">
           {{ name }}
@@ -69,11 +69,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.r-tit {
-  .title {
-    font-size: 24px;
-  }
-}
 .album-list {
   overflow: hidden;
   margin: 20px 0 0 -33px;

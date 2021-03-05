@@ -29,7 +29,7 @@
   <div class="g-bd g-wrap1">
     <div class="g-wrap">
       <div class="m-rcmd">
-        <r-title title="热门推荐" more to="/discover/playlist">
+        <r-title title="热门推荐" more main to="/discover/playlist">
           <div class="g-tab" v-if="catHots.length">
             <template v-for="(cat, index) in catHots">
               <router-link
@@ -55,11 +55,11 @@
         </ul>
       </div>
       <div class="m-new">
-        <r-title title="新碟上架" more to="/discover/album" />
+        <r-title title="新碟上架" more main to="/discover/album" />
         <swipe-5 class="new-album" :list="newAlbum" />
       </div>
       <div class="m-list">
-        <r-title title="榜单" more to="/discover/toplist" />
+        <r-title title="榜单" more main to="/discover/toplist" />
         <div class="list-wrap">
           <m-toplist
             v-for="{ id, name, ToplistType, coverImgUrl, tracks } in toplist"

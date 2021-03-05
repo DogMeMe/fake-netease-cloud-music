@@ -163,6 +163,8 @@ export interface IProgram {
     category: string;
     name: string;
   };
+  listenerCount?: number;
+  likedCount?: number;
 }
 
 export interface IRecProgramData extends IResponse {

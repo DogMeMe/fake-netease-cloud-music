@@ -10,7 +10,7 @@ export default {
     app.config.globalProperties.formatDate = (date: number, format: string) => {
       const dateObj = new Date(date);
       const year = dateObj.getFullYear();
-      const month = padStartN(dateObj.getMonth());
+      const month = padStartN(dateObj.getMonth() + 1);
       const day = padStartN(dateObj.getDate());
       const returnDate = format
         .replace("YYYY", year + "")

@@ -20,11 +20,13 @@ export const useRecProgram = () => {
   };
 };
 
-export const useDJTop = () => {
+export const useDJTop = (limit = 100) => {
   const toplist = ref([] as Array<IDJTop>);
+  const updateTime = ref()
   onMounted(async () => {
-    const res = await getDJTop();
+    const res = await getDJTop(limit);
     if (res?.toplist) {
+      updateTime.value = res.updateTime
       toplist.value = res.toplist.map((item) => {
         if (item.lastRank === -1) {
           item.icon = "new";
@@ -46,6 +48,7 @@ export const useDJTop = () => {
   });
   return {
     toplist,
+    updateTime
   };
 };
 

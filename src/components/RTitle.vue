@@ -1,13 +1,13 @@
 <template>
-  <div class="r-tit" :class="{ 'r-bg': cirIcon, to: to }">
+  <div class="r-tit" :class="{ 'r-bg': cirIcon, to: to , big: big}">
     <router-link class="title" :to="to">{{ title }}</router-link>
     <span class="more">
-      <template v-if="more && to">
-        <router-link :to="to">更多</router-link>
+      <template v-if="main && more">
+        <router-link :to="to" :main="to && main">更多</router-link>
         <i :class="{ 'r-bg': more }"></i>
       </template>
       <template v-else-if="more">
-        <a>更多 ></a>
+        <router-link :to="to">更多 ></router-link>
       </template>
       <slot name="more"></slot>
     </span>
@@ -24,6 +24,14 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    big: {
+      type: Boolean,
+      default: false,
+    },
+    main: {
+      type: Boolean,
+      default: false,
     },
     more: {
       type: Boolean,
@@ -54,8 +62,15 @@ export default {
     background-position: -225px -156px;
     padding-left: 34px;
   }
-  &.to {
+  &.main {
     padding-right: 10px;
+  }
+  &.big{
+    height: 40px;
+    .title{
+      font-size: 24px;
+      line-height: 31px;
+    }
   }
   .title {
     font-size: 20px;

@@ -64,8 +64,8 @@ export const getRecProgram = () => {
   return reqGet<IRecProgramData>("/program/recommend");
 };
 
-export const getDJTop = () => {
-  return reqGet<IDJTopData>("/dj/program/toplist?limit=10");
+export const getDJTop = (limit: number) => {
+  return reqGet<IDJTopData>(`/dj/program/toplist?limit=${limit}`);
 };
 
 export const getDJCategory = () => {
