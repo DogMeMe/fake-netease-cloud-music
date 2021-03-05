@@ -76,8 +76,19 @@ export const getDJByCategory = (type?: number) => {
   return reqGet<IDJData>(`/dj/recommend/type?type=${type}`);
 };
 
-export const getArtists = (initial: string, type = -1, area = -1, offset = 0, limit = 100) => {
+export const getArtists = (
+  initial: string,
+  type = -1,
+  area = -1,
+  offset = 0,
+  limit = 100
+) => {
   return reqGet<IArtistData>(
     `/artist/list?type=${type}&area=${area}&limit=${limit}&offset=${offset}&initial=${initial}`
   );
+};
+
+export const getSongUrl = (id: number | string) => {
+  reqGet(`/song/url?id=${id}`);
+  reqGet(`/song/detail?ids=${id}`)
 };

@@ -21,7 +21,7 @@
           {{ name }}
         </router-link>
         <div class="oper">
-          <a class="oper-play r-bg" title="播放" />
+          <a class="oper-play r-bg" title="播放" @click="play(id)" />
           <a class="oper-add icon-bg" title="添加到播放列表" />
           <a class="oper-collect r-bg" title="收藏" />
         </div>
@@ -34,6 +34,7 @@
 </template>
 
 <script lang="ts">
+import { useSongUrl } from "@/hook/discover/index";
 export default {
   name: "MToplist",
   props: {
@@ -59,7 +60,12 @@ export default {
     },
   },
   setup() {
-    return {};
+    const play = (id: number) => {
+      useSongUrl(id);
+    };
+    return {
+      play,
+    };
   },
 };
 </script>
@@ -123,11 +129,11 @@ export default {
         .oper {
           display: block;
         }
-        .row1{
+        .row1 {
           width: 96px;
         }
       }
-      .row1{
+      .row1 {
         width: 170px;
       }
       .oper {
