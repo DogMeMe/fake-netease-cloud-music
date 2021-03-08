@@ -3,11 +3,13 @@
   <router-view />
   <m-foot />
   <m-up />
+  <m-play-bar />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import MFoot from "./components/MFoot.vue";
+import MPlayBar from "./components/MPlayBar.vue";
 import MTop from "./components/MTop.vue";
 import MUp from "./components/MUp.vue";
 export default defineComponent({
@@ -15,6 +17,7 @@ export default defineComponent({
     MTop,
     MFoot,
     MUp,
+    MPlayBar
   },
 });
 </script>

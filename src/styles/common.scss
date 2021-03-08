@@ -56,6 +56,10 @@
   background: url("~@/assets/discover/table.png") no-repeat;
 }
 
+.play-bar-bg{
+  background: url("~@/assets/frame/playbar.png") no-repeat;
+}
+
 input {
   &::placeholder {
     color: #9b9b9b;
